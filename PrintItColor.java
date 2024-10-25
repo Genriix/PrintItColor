@@ -16,20 +16,29 @@ class PrintItColor {
 	}
 
 	public static void PrintItColor(String imput) {
+		int pastColorCode = 0;
+		int colorCode = 0;	
 		for (int i = 0; i < imput.length(); i++) {
 			char symbol = imput.charAt(i);
 			String paintedSymbol;
-			int colorCode = (int)(Math.random() * 3) + 1;
+			while (pastColorCode == colorCode) {
+				colorCode = GetRandomNumber();
+			}
+
 			switch (colorCode) {
 				case 1 : paintedSymbol = BLUE + symbol + RESET; break;
 				case 2 : paintedSymbol = GREEN + symbol + RESET; break;
 				case 3 : paintedSymbol = YELLOW + symbol + RESET; break;
 				default : paintedSymbol = RESET + symbol; break;
 			}
+			pastColorCode = colorCode;
 			System.out.print(paintedSymbol);
 		}
 	}
-
+	
+	public static int GetRandomNumber() {
+		return (int)(Math.random() * 3) + 1;
+	}
 	public static final String EMOJI = "<^'^> ";
 	public static final String RESET = "\u001B[0m";
 	public static final String BLUE = "\u001B[34m";
