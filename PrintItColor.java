@@ -4,13 +4,15 @@ class PrintItColor {
 	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
 		boolean done = false;
-		do {
-			System.out.print(EMOJI + "-> ");
-			String imput = scan.nextLine();
-			if (imput.equals("q")) done = true;
-			else PrintItColor(imput);
-			System.out.println();
-		} while (!done);
+		try {
+			do {
+				System.out.print(EMOJI + "-> ");
+				String imput = scan.nextLine();
+				if (imput.equals("q")) done = true;
+				else PrintItColor(imput);
+				System.out.println();
+			} while (!done);
+		} catch(Exception e) {}
 		scan.close();		
 		System.out.println(EMOJI + "Buy!");
 	}
